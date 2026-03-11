@@ -57,6 +57,28 @@ transition:0.3s;
 box-shadow:0 0 20px #6366f1;
 }
 
+/* Course Gallery */
+
+.course-card{
+transition:0.4s;
+}
+
+.course-card:hover{
+transform:translateY(-10px);
+}
+
+.course-img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:12px;
+transition:0.4s;
+}
+
+.course-img:hover{
+transform:scale(1.05);
+}
+
 </style>
 
 </head>
@@ -68,18 +90,14 @@ box-shadow:0 0 20px #6366f1;
 <nav class="flex justify-between items-center p-6 max-w-7xl mx-auto">
 
 <h1 class="text-2xl font-bold text-indigo-400">
-
 SkillLaunch 🚀
-
 </h1>
 
 <div class="space-x-6">
-
 <a href="#" class="hover:text-indigo-400">Courses</a>
 <a href="#" class="hover:text-indigo-400">Resources</a>
 <a href="#" class="hover:text-indigo-400">Jobs</a>
 <a href="login.html" class="btn">Login</a>
-
 </div>
 
 </nav>
@@ -89,21 +107,15 @@ SkillLaunch 🚀
 <section class="text-center py-28 px-6">
 
 <h1 class="text-5xl font-bold mb-6">
-
 Learn Skills & Get Jobs
-
 </h1>
 
 <p class="text-gray-300 mb-10 text-lg">
-
 Courses • Resources • Internships • Jobs
-
 </p>
 
 <button class="btn text-lg">
-
 Start Learning
-
 </button>
 
 </section>
@@ -113,68 +125,78 @@ Start Learning
 <section class="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 p-6">
 
 <div class="glass card p-6 text-center">
-
-<h3 class="text-xl font-bold mb-3">
-
-🎓 Courses
-
-</h3>
-
-<p class="text-gray-300">
-
-Learn coding, AI, and tech skills.
-
-</p>
-
+<h3 class="text-xl font-bold mb-3">🎓 Courses</h3>
+<p class="text-gray-300">Learn coding, AI, and tech skills.</p>
 </div>
 
 <div class="glass card p-6 text-center">
-
-<h3 class="text-xl font-bold mb-3">
-
-📄 Resources
-
-</h3>
-
-<p class="text-gray-300">
-
-Download PDFs, guides and notes.
-
-</p>
-
+<h3 class="text-xl font-bold mb-3">📄 Resources</h3>
+<p class="text-gray-300">Download PDFs, guides and notes.</p>
 </div>
 
 <div class="glass card p-6 text-center">
+<h3 class="text-xl font-bold mb-3">💼 Jobs</h3>
+<p class="text-gray-300">Find internships and jobs.</p>
+</div>
 
-<h3 class="text-xl font-bold mb-3">
+</section>
 
-💼 Jobs
+<!-- IMAGE GALLERY FOR COURSES -->
 
-</h3>
+<section class="max-w-7xl mx-auto p-6">
 
-<p class="text-gray-300">
+<h2 class="text-3xl font-bold text-center mb-10">
+Top Courses
+</h2>
 
-Find internships and jobs.
+<div class="grid md:grid-cols-3 gap-8">
 
-</p>
+<div class="course-card">
+
+<a href="https://react.dev" target="_blank">
+<img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee" class="course-img">
+</a>
+
+<h3 class="text-xl font-bold mt-3">React Development</h3>
+<p class="text-gray-400">Modern frontend framework</p>
+
+</div>
+
+<div class="course-card">
+
+<a href="https://nodejs.org" target="_blank">
+<img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c" class="course-img">
+</a>
+
+<h3 class="text-xl font-bold mt-3">Node.js Backend</h3>
+<p class="text-gray-400">Build scalable APIs</p>
+
+</div>
+
+<div class="course-card">
+
+<a href="https://python.org" target="_blank">
+<img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72" class="course-img">
+</a>
+
+<h3 class="text-xl font-bold mt-3">Python Programming</h3>
+<p class="text-gray-400">AI, automation & data science</p>
+
+</div>
 
 </div>
 
 </section>
 
-<!-- COURSES -->
+<!-- COURSES FROM DATABASE -->
 
 <section class="max-w-6xl mx-auto p-6 mt-16">
 
 <h2 class="text-3xl font-bold mb-10 text-center">
-
 Popular Courses
-
 </h2>
 
-<div id="courses" class="grid md:grid-cols-3 gap-8">
-
-</div>
+<div id="courses" class="grid md:grid-cols-3 gap-8"></div>
 
 </section>
 
@@ -183,9 +205,7 @@ Popular Courses
 <footer class="text-center p-10 mt-20 text-gray-400">
 
 <p>
-
 © 2026 SkillLaunch — Learn. Build. Get Hired.
-
 </p>
 
 </footer>
