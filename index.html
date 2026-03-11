@@ -1,280 +1,48 @@
 
-```html
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>SkillLaunch - Learn & Career Platform</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkillLaunch</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
-
-<style>
-html{
-scroll-behavior:smooth;
-}
-</style>
 
 </head>
 
 <body class="bg-gray-100">
 
-<!-- NAVBAR -->
-
-<nav class="bg-blue-600 text-white p-4 shadow-lg">
-
-<div class="max-w-6xl mx-auto flex justify-between">
+<nav class="bg-blue-600 text-white p-4 flex justify-between">
 
 <h1 class="text-xl font-bold">SkillLaunch</h1>
 
-<div class="space-x-4">
+<div>
 
-<a href="#courses">Courses</a>
-<a href="#resources">Resources</a>
-<a href="#jobs">Jobs</a>
-<a href="#internships">Internships</a>
-
-</div>
+<a href="login.html" class="mr-4">Login</a>
+<a href="dashboard.html">Admin</a>
 
 </div>
 
 </nav>
 
-
-<!-- HERO SECTION -->
-
-<section class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-20">
-
-<div class="max-w-5xl mx-auto text-center">
+<section class="text-center py-20 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
 
 <h1 class="text-4xl font-bold mb-4">
-Learn Skills & Get Your Dream Job
+Learn Skills & Get Jobs
 </h1>
 
-<p class="text-lg mb-6">
-Courses • Resources • Internship Alerts • Job Alerts
-</p>
-
-<input id="search"
-placeholder="Search courses, jobs..."
-class="p-3 rounded text-black w-72">
-
-</div>
+<p>Courses • Resources • Internships • Jobs</p>
 
 </section>
-
-
-<!-- COURSES -->
-
-<section id="courses" class="max-w-6xl mx-auto p-6">
-
-<h2 class="text-2xl font-bold mb-4">Courses</h2>
-
-<div id="courseList" class="grid md:grid-cols-3 gap-4"></div>
-
-</section>
-
-
-<!-- RESOURCES -->
-
-<section id="resources" class="max-w-6xl mx-auto p-6">
-
-<h2 class="text-2xl font-bold mb-4">Resources</h2>
-
-<div id="resourceList" class="grid md:grid-cols-3 gap-4"></div>
-
-</section>
-
-
-<!-- JOBS -->
-
-<section id="jobs" class="max-w-6xl mx-auto p-6">
-
-<h2 class="text-2xl font-bold mb-4">Job Alerts</h2>
-
-<div id="jobList" class="grid md:grid-cols-3 gap-4"></div>
-
-</section>
-
-
-<!-- INTERNSHIPS -->
-
-<section id="internships" class="max-w-6xl mx-auto p-6">
-
-<h2 class="text-2xl font-bold mb-4">Internships</h2>
-
-<div id="internList" class="grid md:grid-cols-3 gap-4"></div>
-
-</section>
-
-
-<!-- ADMIN PANEL -->
 
 <section class="max-w-6xl mx-auto p-6">
 
-<h2 class="text-2xl font-bold mb-4">Admin Panel</h2>
+<h2 class="text-2xl font-bold mb-4">Popular Courses</h2>
 
-<div class="bg-white p-4 rounded shadow">
-
-<h3 class="font-bold mb-2">Add Course</h3>
-
-<input id="ctitle" placeholder="Course Title" class="border p-2 m-1">
-<input id="clink" placeholder="Course Link" class="border p-2 m-1">
-
-<button onclick="addCourse()" class="bg-blue-600 text-white px-4 py-2 rounded">
-Add
-</button>
-
-
-<h3 class="font-bold mt-6 mb-2">Add Resource</h3>
-
-<input id="rtitle" placeholder="Resource Title" class="border p-2 m-1">
-<input id="rlink" placeholder="PDF Link" class="border p-2 m-1">
-
-<button onclick="addResource()" class="bg-green-600 text-white px-4 py-2 rounded">
-Add
-</button>
-
-
-<h3 class="font-bold mt-6 mb-2">Add Job</h3>
-
-<input id="jcompany" placeholder="Company" class="border p-2 m-1">
-<input id="jrole" placeholder="Role" class="border p-2 m-1">
-
-<button onclick="addJob()" class="bg-purple-600 text-white px-4 py-2 rounded">
-Add
-</button>
-
-
-<h3 class="font-bold mt-6 mb-2">Add Internship</h3>
-
-<input id="icompany" placeholder="Company" class="border p-2 m-1">
-<input id="irole" placeholder="Role" class="border p-2 m-1">
-
-<button onclick="addInternship()" class="bg-indigo-600 text-white px-4 py-2 rounded">
-Add
-</button>
-
-</div>
+<div id="courses" class="grid md:grid-cols-3 gap-4"></div>
 
 </section>
 
-
-<!-- FOOTER -->
-
-<footer class="bg-gray-900 text-white text-center p-6 mt-10">
-
-<p>© 2026 SkillLaunch • Learn Build Grow</p>
-
-</footer>
-
-
-<script>
-
-let courses=[]
-let resources=[]
-let jobs=[]
-let internships=[]
-
-
-function createCard(title,desc,link){
-
-return `
-<div class="bg-white p-4 rounded shadow hover:shadow-xl transition">
-
-<h3 class="font-bold text-lg mb-2">${title}</h3>
-
-<p class="text-gray-600 mb-3">${desc}</p>
-
-<a href="${link}" class="text-blue-600">Open</a>
-
-</div>
-`
-
-}
-
-
-function render(){
-
-document.getElementById("courseList").innerHTML=
-courses.map(c=>createCard(c.title,"Course",c.link)).join("")
-
-document.getElementById("resourceList").innerHTML=
-resources.map(r=>createCard(r.title,"Resource",r.link)).join("")
-
-document.getElementById("jobList").innerHTML=
-jobs.map(j=>createCard(j.company,j.role,"#")).join("")
-
-document.getElementById("internList").innerHTML=
-internships.map(i=>createCard(i.company,i.role,"#")).join("")
-
-}
-
-
-function addCourse(){
-
-courses.push({
-title:ctitle.value,
-link:clink.value
-})
-
-render()
-
-}
-
-
-function addResource(){
-
-resources.push({
-title:rtitle.value,
-link:rlink.value
-})
-
-render()
-
-}
-
-
-function addJob(){
-
-jobs.push({
-company:jcompany.value,
-role:jrole.value
-})
-
-render()
-
-}
-
-
-function addInternship(){
-
-internships.push({
-company:icompany.value,
-role:irole.value
-})
-
-render()
-
-}
-
-
-document.getElementById("search").addEventListener("input",function(){
-
-let value=this.value.toLowerCase()
-
-let filtered=courses.filter(c=>c.title.toLowerCase().includes(value))
-
-document.getElementById("courseList").innerHTML=
-filtered.map(c=>createCard(c.title,"Course",c.link)).join("")
-
-})
-
-
-render()
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
