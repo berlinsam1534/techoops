@@ -56,10 +56,14 @@ data.forEach(r=>{
 html+=`
 <div class="bg-gray-800 p-6 rounded">
 
-<h3 class="font-bold text-lg">${r.title}</h3>
+<h3 class="font-bold text-lg mb-3">${r.title}</h3>
 
-<a href="${r.file_link}" target="_blank" class="text-blue-400">
-View / Download
+<a href="${r.file_link}" 
+target="_blank"
+class="bg-blue-500 px-4 py-2 rounded">
+
+View Resource
+
 </a>
 
 </div>
@@ -74,7 +78,6 @@ container.innerHTML=html
 }
 
 }
-
 
 
 // LOAD JOBS
