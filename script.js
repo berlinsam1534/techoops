@@ -56,15 +56,14 @@ data.forEach(r=>{
 html+=`
 <div class="bg-gray-800 p-6 rounded">
 
-<h3 class="font-bold text-lg mb-3">${r.title}</h3>
+<h3 class="font-bold text-lg mb-4">${r.title}</h3>
 
-<a href="${r.file_link}" 
-target="_blank"
+<button onclick="openResource('${r.file_link}')" 
 class="bg-blue-500 px-4 py-2 rounded">
 
 View Resource
 
-</a>
+</button>
 
 </div>
 `
@@ -77,6 +76,10 @@ if(container){
 container.innerHTML=html
 }
 
+}
+
+function openResource(url){
+window.open(url,"_blank")
 }
 
 
