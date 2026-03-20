@@ -19,33 +19,31 @@ color:white;
 font-family:sans-serif;
 }
 
-/* 🧊 Glass Effect */
+/* 🧊 Glass effect */
 .glass{
 background: rgba(255,255,255,0.08);
 backdrop-filter: blur(14px);
 border:1px solid rgba(255,255,255,0.15);
-border-radius:18px;
+border-radius:16px;
 }
 
 /* 🎴 3D Card */
 .card{
-transition:0.4s;
-transform-style:preserve-3d;
+transition: all 0.4s ease;
+transform-style: preserve-3d;
 }
-
 .card:hover{
 transform: rotateY(10deg) rotateX(6deg) scale(1.05);
 }
 
-/* 🔘 Button */
+/* 🔘 Gradient button */
 .btn{
-background:linear-gradient(45deg,#6366f1,#22c55e);
+background: linear-gradient(45deg,#6366f1,#22c55e);
 padding:10px 18px;
 border-radius:10px;
 transition:0.3s;
 display:inline-block;
 }
-
 .btn:hover{
 box-shadow:0 0 20px #6366f1;
 }
@@ -54,9 +52,21 @@ box-shadow:0 0 20px #6366f1;
 .search{
 background:white;
 color:black;
-border-radius:10px;
 padding:12px;
+border-radius:10px;
 width:100%;
+outline:none;
+}
+
+/* 🎯 Filter buttons */
+.filter-btn{
+padding:8px 14px;
+border-radius:8px;
+background:rgba(255,255,255,0.1);
+transition:0.3s;
+}
+.filter-btn:hover{
+background:#6366f1;
 }
 
 </style>
@@ -65,26 +75,15 @@ width:100%;
 
 <body>
 
-<!-- NAV -->
-<nav class="flex justify-between items-center p-6 max-w-7xl mx-auto">
-
-<h1 class="text-2xl font-bold text-indigo-400">
-SkillLaunch 🚀
-</h1>
-
-<a href="index.html" class="btn">Home</a>
-
-</nav>
-
 <!-- HEADER -->
-<div class="text-center py-10">
+<div class="text-center py-12 px-4">
 
-<h1 class="text-4xl md:text-5xl font-bold mb-4">
-📚 Explore Resources
+<h1 class="text-4xl md:text-5xl font-bold mb-4 text-indigo-400">
+📚 SkillLaunch Resources
 </h1>
 
 <p class="text-gray-300">
-Find PDFs, guides & notes easily
+Explore notes, PDFs & guides
 </p>
 
 </div>
@@ -92,7 +91,7 @@ Find PDFs, guides & notes easily
 <!-- MAIN -->
 <div class="max-w-6xl mx-auto px-4">
 
-<!-- SEARCH -->
+<!-- 🔍 SEARCH -->
 <input 
 id="searchInput"
 onkeyup="searchResources()"
@@ -100,36 +99,30 @@ placeholder="🔍 Search resources..."
 class="search mb-6"
 />
 
-<!-- FILTER -->
+<!-- 🎯 FILTER -->
 <div class="flex flex-wrap gap-3 mb-8 justify-center">
 
-<button onclick="filterCategory('all')" class="btn">All</button>
-<button onclick="filterCategory('web')" class="btn">Web Dev</button>
-<button onclick="filterCategory('python')" class="btn">Python</button>
+<button onclick="filterCategory('all')" class="filter-btn">All</button>
+<button onclick="filterCategory('web')" class="filter-btn">Web Dev</button>
+<button onclick="filterCategory('python')" class="filter-btn">Python</button>
 
 </div>
 
-<!-- GRID -->
+<!-- 📦 GRID -->
 <div id="resourceContainer"
 class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
 <!-- CARD 1 -->
 <div class="resource-card glass card p-6 text-center" data-category="web">
 
-<h3 class="text-xl font-bold mb-3">
-React Guide
-</h3>
+<h3 class="text-xl font-bold mb-3">React Guide</h3>
 
-<p class="text-gray-300 mb-4">
-Frontend framework notes
-</p>
+<p class="text-gray-300 mb-4">Frontend framework notes</p>
 
 <a href="https://ffvknewokvkgipzcacwk.supabase.co/storage/v1/object/public/resources/react_guide.pdf"
 target="_blank"
 class="btn">
-
 View Resource
-
 </a>
 
 </div>
@@ -137,20 +130,14 @@ View Resource
 <!-- CARD 2 -->
 <div class="resource-card glass card p-6 text-center" data-category="python">
 
-<h3 class="text-xl font-bold mb-3">
-Python Notes
-</h3>
+<h3 class="text-xl font-bold mb-3">Python Notes</h3>
 
-<p class="text-gray-300 mb-4">
-AI & Data Science basics
-</p>
+<p class="text-gray-300 mb-4">AI & Data Science basics</p>
 
 <a href="https://ffvknewokvkgipzcacwk.supabase.co/storage/v1/object/public/resources/python_notes.pdf"
 target="_blank"
 class="btn">
-
 View Resource
-
 </a>
 
 </div>
@@ -158,20 +145,14 @@ View Resource
 <!-- CARD 3 -->
 <div class="resource-card glass card p-6 text-center" data-category="web">
 
-<h3 class="text-xl font-bold mb-3">
-JavaScript Guide
-</h3>
+<h3 class="text-xl font-bold mb-3">JavaScript Guide</h3>
 
-<p class="text-gray-300 mb-4">
-Core JS concepts
-</p>
+<p class="text-gray-300 mb-4">Core JS concepts</p>
 
 <a href="https://ffvknewokvkgipzcacwk.supabase.co/storage/v1/object/public/resources/javascript_notes.pdf"
 target="_blank"
 class="btn">
-
 View Resource
-
 </a>
 
 </div>
@@ -182,12 +163,10 @@ View Resource
 
 <!-- FOOTER -->
 <footer class="text-center p-10 mt-16 text-gray-400">
-
 © 2026 SkillLaunch — Learn. Build. Get Hired.
-
 </footer>
 
-<!-- SCRIPT -->
+<!-- 🔥 SCRIPT -->
 <script>
 
 function searchResources(){
@@ -196,7 +175,6 @@ let cards = document.querySelectorAll(".resource-card")
 
 cards.forEach(card=>{
 let text = card.innerText.toLowerCase()
-
 card.style.display = text.includes(input) ? "block" : "none"
 })
 }
@@ -205,10 +183,10 @@ function filterCategory(category){
 let cards = document.querySelectorAll(".resource-card")
 
 cards.forEach(card=>{
-if(category==="all" || card.dataset.category===category){
-card.style.display="block"
+if(category === "all" || card.dataset.category === category){
+card.style.display = "block"
 }else{
-card.style.display="none"
+card.style.display = "none"
 }
 })
 }
