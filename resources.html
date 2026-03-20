@@ -12,61 +12,100 @@
 
 <div class="max-w-6xl mx-auto p-10">
 
-<h1 class="text-4xl font-bold mb-8">
-Resources
-</h1>
+<h1 class="text-4xl font-bold mb-8">Resources</h1>
 
-<!-- RESOURCE GRID -->
-<div class="grid md:grid-cols-3 gap-8">
+<!-- 🔍 SEARCH -->
+<input 
+id="searchInput"
+onkeyup="searchResources()"
+placeholder="Search resources..."
+class="w-full p-3 mb-6 rounded text-black"
+/>
+
+<!-- 🎯 FILTER BUTTONS -->
+<div class="flex gap-4 mb-8">
+<button onclick="filterCategory('all')" class="bg-blue-500 px-4 py-2 rounded">All</button>
+<button onclick="filterCategory('web')" class="bg-green-500 px-4 py-2 rounded">Web Dev</button>
+<button onclick="filterCategory('python')" class="bg-purple-500 px-4 py-2 rounded">Python</button>
+</div>
+
+<!-- 📦 RESOURCE GRID -->
+<div id="resourceContainer" class="grid md:grid-cols-3 gap-8">
 
 <!-- RESOURCE 1 -->
-<div class="bg-gray-800 p-6 rounded">
-<h3 class="text-xl font-bold mb-3">
-FULLSTACK Guide
-</h3>
+<div class="resource-card bg-gray-800 p-6 rounded" data-category="web">
+<h3 class="text-xl font-bold mb-3">React Guide</h3>
 
-<a href="https://drive.google.com/file/d/1ERF4NOMroQ6KcbHhKWYqt_tGDANExFIn/view?usp=drive_link"
+<a href="https://ffvknewokvkgipzcacwk.supabase.co/storage/v1/object/public/resources/react_guide.pdf"
 target="_blank"
 class="bg-green-500 px-4 py-2 rounded inline-block">
-
 View Resource
-
 </a>
 </div>
 
 <!-- RESOURCE 2 -->
-<div class="bg-gray-800 p-6 rounded">
-<h3 class="text-xl font-bold mb-3">
-Python Notes
-</h3>
+<div class="resource-card bg-gray-800 p-6 rounded" data-category="python">
+<h3 class="text-xl font-bold mb-3">Python Notes</h3>
 
 <a href="https://ffvknewokvkgipzcacwk.supabase.co/storage/v1/object/public/resources/python_notes.pdf"
 target="_blank"
 class="bg-purple-500 px-4 py-2 rounded inline-block">
-
 View Resource
-
 </a>
 </div>
 
 <!-- RESOURCE 3 -->
-<div class="bg-gray-800 p-6 rounded">
-<h3 class="text-xl font-bold mb-3">
-JavaScript Guide
-</h3>
+<div class="resource-card bg-gray-800 p-6 rounded" data-category="web">
+<h3 class="text-xl font-bold mb-3">JavaScript Guide</h3>
 
 <a href="https://ffvknewokvkgipzcacwk.supabase.co/storage/v1/object/public/resources/javascript_notes.pdf"
 target="_blank"
 class="bg-blue-500 px-4 py-2 rounded inline-block">
-
 View Resource
-
 </a>
 </div>
 
 </div>
 
 </div>
+
+<!-- 🔥 SCRIPT -->
+<script>
+
+function searchResources(){
+let input = document.getElementById("searchInput").value.toLowerCase()
+let cards = document.querySelectorAll(".resource-card")
+
+cards.forEach(card=>{
+let title = card.innerText.toLowerCase()
+
+if(title.includes(input)){
+card.style.display = "block"
+}else{
+card.style.display = "none"
+}
+})
+}
+
+function filterCategory(category){
+let cards = document.querySelectorAll(".resource-card")
+
+cards.forEach(card=>{
+
+if(category === "all"){
+card.style.display = "block"
+}
+else if(card.getAttribute("data-category") === category){
+card.style.display = "block"
+}
+else{
+card.style.display = "none"
+}
+
+})
+}
+
+</script>
 
 </body>
 </html>
