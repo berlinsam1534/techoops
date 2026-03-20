@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Jobs - SkillLaunch</title>
 
@@ -9,21 +13,173 @@
 <!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
+<style>
+
+/* 🌌 Background */
+body{
+background: radial-gradient(circle at top,#1e3a8a,#020617);
+color:white;
+font-family:sans-serif;
+}
+
+/* 🧊 Glass */
+.glass{
+background: rgba(255,255,255,0.08);
+backdrop-filter: blur(14px);
+border:1px solid rgba(255,255,255,0.15);
+border-radius:16px;
+}
+
+/* 🎴 3D */
+.card{
+transition:0.4s;
+transform-style:preserve-3d;
+}
+.card:hover{
+transform: rotateY(10deg) rotateX(6deg) scale(1.05);
+}
+
+/* 🔘 Button */
+.btn{
+background: linear-gradient(45deg,#6366f1,#22c55e);
+padding:10px 18px;
+border-radius:10px;
+transition:0.3s;
+display:inline-block;
+}
+.btn:hover{
+box-shadow:0 0 20px #6366f1;
+}
+
+/* 🔍 Search */
+.search{
+background:white;
+color:black;
+padding:12px;
+border-radius:10px;
+width:100%;
+}
+
+/* 🎯 Filters */
+.filter-btn{
+padding:8px 14px;
+border-radius:8px;
+background:rgba(255,255,255,0.1);
+transition:0.3s;
+}
+.filter-btn:hover{
+background:#6366f1;
+}
+
+</style>
+
 </head>
 
-<body class="bg-gray-900 text-white">
+<body>
 
-<div class="max-w-6xl mx-auto p-10">
+<!-- HEADER -->
+<div class="text-center py-12 px-4">
 
-<h1 class="text-4xl font-bold mb-8">
-Jobs & Internships
+<h1 class="text-4xl md:text-5xl font-bold mb-4 text-indigo-400">
+💼 Jobs & Internships
 </h1>
 
-<div id="jobs" class="grid md:grid-cols-2 gap-6"></div>
+<p class="text-gray-300">
+Find your next opportunity 🚀
+</p>
 
 </div>
 
-<script src="script.js"></script>
+<!-- MAIN -->
+<div class="max-w-6xl mx-auto px-4">
+
+<!-- 🔍 SEARCH -->
+<input 
+id="searchInput"
+onkeyup="searchJobs()"
+placeholder="🔍 Search jobs..."
+class="search mb-6"
+/>
+
+<!-- 🎯 FILTER -->
+<div class="flex flex-wrap gap-3 mb-8 justify-center">
+
+<button onclick="filterJobs('all')" class="filter-btn">All</button>
+<button onclick="filterJobs('internship')" class="filter-btn">Internship</button>
+<button onclick="filterJobs('fulltime')" class="filter-btn">Full-Time</button>
+<button onclick="filterJobs('remote')" class="filter-btn">Remote</button>
+
+</div>
+
+<!-- 📦 JOB GRID -->
+<div id="jobs" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+<!-- SAMPLE CARD -->
+<div class="job-card glass card p-6" data-category="internship">
+
+<h3 class="text-xl font-bold mb-2">Frontend Intern</h3>
+
+<p class="text-gray-300 mb-2">Startup • Remote</p>
+
+<p class="text-sm text-gray-400 mb-4">Work with React & UI design</p>
+
+<a href="#" target="_blank" class="btn">
+Apply Now
+</a>
+
+</div>
+
+<div class="job-card glass card p-6" data-category="fulltime">
+
+<h3 class="text-xl font-bold mb-2">React Developer</h3>
+
+<p class="text-gray-300 mb-2">Company • Full-time</p>
+
+<p class="text-sm text-gray-400 mb-4">Build scalable web apps</p>
+
+<a href="#" target="_blank" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="text-center p-10 mt-16 text-gray-400">
+© 2026 SkillLaunch — Learn. Build. Get Hired.
+</footer>
+
+<!-- 🔥 SCRIPT -->
+<script>
+
+// SEARCH
+function searchJobs(){
+let input = document.getElementById("searchInput").value.toLowerCase()
+let cards = document.querySelectorAll(".job-card")
+
+cards.forEach(card=>{
+let text = card.innerText.toLowerCase()
+card.style.display = text.includes(input) ? "block" : "none"
+})
+}
+
+// FILTER
+function filterJobs(category){
+let cards = document.querySelectorAll(".job-card")
+
+cards.forEach(card=>{
+if(category==="all" || card.dataset.category===category){
+card.style.display="block"
+}else{
+card.style.display="none"
+}
+})
+}
+
+</script>
 
 </body>
 </html>
