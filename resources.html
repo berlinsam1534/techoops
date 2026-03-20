@@ -1,75 +1,193 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Resources - SkillLaunch</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
+<style>
+
+/* 🌌 Background */
+body{
+background: radial-gradient(circle at top,#1e3a8a,#020617);
+color:white;
+font-family:sans-serif;
+}
+
+/* 🧊 Glass Effect */
+.glass{
+background: rgba(255,255,255,0.08);
+backdrop-filter: blur(14px);
+border:1px solid rgba(255,255,255,0.15);
+border-radius:18px;
+}
+
+/* 🎴 3D Card */
+.card{
+transition:0.4s;
+transform-style:preserve-3d;
+}
+
+.card:hover{
+transform: rotateY(10deg) rotateX(6deg) scale(1.05);
+}
+
+/* 🔘 Button */
+.btn{
+background:linear-gradient(45deg,#6366f1,#22c55e);
+padding:10px 18px;
+border-radius:10px;
+transition:0.3s;
+display:inline-block;
+}
+
+.btn:hover{
+box-shadow:0 0 20px #6366f1;
+}
+
+/* 🔍 Search */
+.search{
+background:white;
+color:black;
+border-radius:10px;
+padding:12px;
+width:100%;
+}
+
+</style>
+
 </head>
 
-<body class="bg-gray-900 text-white">
+<body>
 
-<div class="max-w-6xl mx-auto p-10">
+<!-- NAV -->
+<nav class="flex justify-between items-center p-6 max-w-7xl mx-auto">
 
-<h1 class="text-4xl font-bold mb-8">Resources</h1>
+<h1 class="text-2xl font-bold text-indigo-400">
+SkillLaunch 🚀
+</h1>
 
-<!-- 🔍 SEARCH -->
+<a href="index.html" class="btn">Home</a>
+
+</nav>
+
+<!-- HEADER -->
+<div class="text-center py-10">
+
+<h1 class="text-4xl md:text-5xl font-bold mb-4">
+📚 Explore Resources
+</h1>
+
+<p class="text-gray-300">
+Find PDFs, guides & notes easily
+</p>
+
+</div>
+
+<!-- MAIN -->
+<div class="max-w-6xl mx-auto px-4">
+
+<!-- SEARCH -->
 <input 
 id="searchInput"
 onkeyup="searchResources()"
-placeholder="Search resources..."
-class="w-full p-3 mb-6 rounded text-black"
+placeholder="🔍 Search resources..."
+class="search mb-6"
 />
 
-<!-- 🎯 FILTER BUTTONS -->
-<div class="flex gap-4 mb-8">
-<button onclick="filterCategory('all')" class="bg-blue-500 px-4 py-2 rounded">All</button>
-<button onclick="filterCategory('web')" class="bg-green-500 px-4 py-2 rounded">Web Dev</button>
-<button onclick="filterCategory('python')" class="bg-purple-500 px-4 py-2 rounded">Python</button>
+<!-- FILTER -->
+<div class="flex flex-wrap gap-3 mb-8 justify-center">
+
+<button onclick="filterCategory('all')" class="btn">All</button>
+<button onclick="filterCategory('web')" class="btn">Web Dev</button>
+<button onclick="filterCategory('python')" class="btn">Python</button>
+
 </div>
 
-<!-- 📦 RESOURCE GRID -->
-<div id="resourceContainer" class="grid md:grid-cols-3 gap-8">
+<!-- GRID -->
+<div id="resourceContainer"
+class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-<!-- RESOURCE 1 -->
-<div class="resource-card bg-gray-800 p-6 rounded" data-category="web">
-<h3 class="text-xl font-bold mb-3">React Guide</h3>
+<!-- CARD 1 -->
+<div class="resource-card glass card p-6 text-center" data-category="web">
+
+<h3 class="text-xl font-bold mb-3">
+React Guide
+</h3>
+
+<p class="text-gray-300 mb-4">
+Frontend framework notes
+</p>
 
 <a href="https://ffvknewokvkgipzcacwk.supabase.co/storage/v1/object/public/resources/react_guide.pdf"
 target="_blank"
-class="bg-green-500 px-4 py-2 rounded inline-block">
+class="btn">
+
 View Resource
+
 </a>
+
 </div>
 
-<!-- RESOURCE 2 -->
-<div class="resource-card bg-gray-800 p-6 rounded" data-category="python">
-<h3 class="text-xl font-bold mb-3">Python Notes</h3>
+<!-- CARD 2 -->
+<div class="resource-card glass card p-6 text-center" data-category="python">
+
+<h3 class="text-xl font-bold mb-3">
+Python Notes
+</h3>
+
+<p class="text-gray-300 mb-4">
+AI & Data Science basics
+</p>
 
 <a href="https://ffvknewokvkgipzcacwk.supabase.co/storage/v1/object/public/resources/python_notes.pdf"
 target="_blank"
-class="bg-purple-500 px-4 py-2 rounded inline-block">
+class="btn">
+
 View Resource
+
 </a>
+
 </div>
 
-<!-- RESOURCE 3 -->
-<div class="resource-card bg-gray-800 p-6 rounded" data-category="web">
-<h3 class="text-xl font-bold mb-3">JavaScript Guide</h3>
+<!-- CARD 3 -->
+<div class="resource-card glass card p-6 text-center" data-category="web">
+
+<h3 class="text-xl font-bold mb-3">
+JavaScript Guide
+</h3>
+
+<p class="text-gray-300 mb-4">
+Core JS concepts
+</p>
 
 <a href="https://ffvknewokvkgipzcacwk.supabase.co/storage/v1/object/public/resources/javascript_notes.pdf"
 target="_blank"
-class="bg-blue-500 px-4 py-2 rounded inline-block">
+class="btn">
+
 View Resource
+
 </a>
-</div>
 
 </div>
 
 </div>
 
-<!-- 🔥 SCRIPT -->
+</div>
+
+<!-- FOOTER -->
+<footer class="text-center p-10 mt-16 text-gray-400">
+
+© 2026 SkillLaunch — Learn. Build. Get Hired.
+
+</footer>
+
+<!-- SCRIPT -->
 <script>
 
 function searchResources(){
@@ -77,13 +195,9 @@ let input = document.getElementById("searchInput").value.toLowerCase()
 let cards = document.querySelectorAll(".resource-card")
 
 cards.forEach(card=>{
-let title = card.innerText.toLowerCase()
+let text = card.innerText.toLowerCase()
 
-if(title.includes(input)){
-card.style.display = "block"
-}else{
-card.style.display = "none"
-}
+card.style.display = text.includes(input) ? "block" : "none"
 })
 }
 
@@ -91,17 +205,11 @@ function filterCategory(category){
 let cards = document.querySelectorAll(".resource-card")
 
 cards.forEach(card=>{
-
-if(category === "all"){
-card.style.display = "block"
+if(category==="all" || card.dataset.category===category){
+card.style.display="block"
+}else{
+card.style.display="none"
 }
-else if(card.getAttribute("data-category") === category){
-card.style.display = "block"
-}
-else{
-card.style.display = "none"
-}
-
 })
 }
 
